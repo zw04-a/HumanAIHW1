@@ -3,7 +3,7 @@
 }
 
 body {
-	background-color: #edeff2;
+	background-color: #74904a;
 	font-family: 'Calibri', 'Roboto', sans-serif;
 }
 
@@ -19,7 +19,7 @@ body {
 .chat_window {
 	border-radius: 10px;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-	background-color: #f8f8f8;
+	background-color: #f5f4f4;
 	overflow: hidden;
 }
 
@@ -53,9 +53,10 @@ body {
 	margin-bottom: 20px;
 	transition: all 0.5s linear;
 	opacity: 0;
-}
+} 
 
-.messages .message .avatar {
+
+ .messages .message .avatar {
 	height: 40px;
 	width: 40px;
 	background-size: cover !important;
@@ -68,7 +69,7 @@ body {
 	font-weight: 300;
 	text-align: right;
 	margin-top: 5px;
-}
+} 
 
 .messages .message.appeared {
 	opacity: 1;
@@ -78,7 +79,8 @@ body {
 	display: inline-block;
 	padding: 20px;
 	border-radius: 6px;
-	min-width: 150px;
+	min-width: 20px;
+	max-width: 80%;
 	position: relative;
 }
 
@@ -107,7 +109,7 @@ body {
 
 .messages .message.left .avatar {
 	float: left;
-	background: url('./img/bot.jpg');
+	background: url('/static/bot_avatar.png');
 }
 
 .messages .message.left .text_wrapper {
@@ -129,7 +131,7 @@ body {
 
 .messages .message.right .avatar {
 	float: right;
-	background: url('./img/guy.jpg');
+	background: url('/static/user_avatar.jpg');
 }
 
 .messages .message.right .text_wrapper {
@@ -148,23 +150,34 @@ body {
 	color: #1a5770;
 }
 
-/* text inpur from user */
+/* text input from user */
 
 .bottom_wrapper {
-	background-color: #fff;
-	padding: 20px;
-	bottom: 0;
-	display: flex;
+    display: flex;
+    justify-content: space-between; /* Ensures the input and button are separated nicely */
+    align-items: center; /* Vertically center the content */
+    width: 100%; /* Make the wrapper take the full width */
+    background-color: #fff; /* White background */
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the wrapper */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for a more polished look */
+    margin-top: 10px; /* Add space from the content above */
 }
 
-.bottom_wrapper #msg_input {
-	flex-grow: 1;
-	outline-width: 0;
-	padding: 12px;
-	border: 1px solid #bcbdc0;
-	border-radius: 50px;
-	margin-right: 15px;
+#prompt-input {
+    width: 80%; /* The input takes most of the space */
+    border: none; /* Remove default border */
+    border-radius: 20px; /* Rounded corners for the input */
+    padding: 10px; /* Padding inside the input */
+    font-size: 16px; /* Font size for the text inside the input */
+    outline: none; /* Remove the blue outline when focused */
 }
+
+#send-btn {
+    width: auto; /* Button width adjusts based on content */
+    margin-left: 10px; /* Add some space between input and button */
+}
+
 
 .app_button_1 {
 	width: 140px;
@@ -177,7 +190,7 @@ body {
 	font-size: 18px;
 	font-weight: 300;
 	text-align: center;
-}
+} 
 
 /* faq section | right side */
 /* ---------------------------------------------------------------------- */
