@@ -39,32 +39,33 @@ class QueryResponse(BaseModel):
 
 # Endpoint to interact with OpenAI API via LangChain
 @app.post("/query", response_model=QueryResponse)
-async def query_openai(request: QueryRequest):
-    try:
-        # Instead of calling the OpenAI API, return a static response
-        static_response = "I’m a simple bot. I don’t have real responses yet!"
-        return QueryResponse(response=static_response)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 # async def query_openai(request: QueryRequest):
 #     try:
-#         # Set your OpenAI API key
-        
-
-#         # Call the OpenAI API via LangChain
-#         chat_completion = client.chat.completions.create(
-#             messages=[
-#                 {
-#                     "role": "user",
-#                     "content": "Say this is a test",
-#                 }
-#             ],
-#             model="gpt-3.5-turbo",
-#         )
-
-#         return QueryResponse(response=chat_completion.choices[0].message.content)
+#         # Instead of calling the OpenAI API, return a static response
+#         static_response = "I’m a simple bot. I don’t have real responses yet!"
+#         return QueryResponse(response=static_response)
 #     except Exception as e:
 #         raise HTTPException(status_code=500, detail=str(e))
+async def query_openai(request: QueryRequest):
+    #return QueryResponse(response="I’m a simple bot. I don’t have real responses yet!")
+    try:
+        # Set your OpenAI API key
+        
+
+        # Call the OpenAI API via LangChain
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": request.prompt,
+                }
+            ],
+            model="gpt-3.5-turbo",
+        )
+
+        return QueryResponse(response=chat_completion.choices[0].message.content)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # Root endpoint
 @app.get("/")
